@@ -1,75 +1,206 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Now Vlog</title>
+    <style>
+        /* Estilo global */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #009688, #0000);
+            color: #fff;
+            overflow: hidden;
+        }
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
 
-# GitHub Pages
+        /* Logo */
+        .logo {
+            font-size: 2rem;
+            color: #009688;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+        /* Título */
+        h1 {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-</header>
+        /* Subtítulo */
+        h2 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
 
-<!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
--->
+        /* Caja de información */
+        .info-box {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.6;
+            padding: 15px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-## Welcome
+        /* Caja de suscripción */
+        .subscribe-box {
+            background: #009688;
+            color: white;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
 
-With GitHub Pages, you can host project blogs, documentation, resumes, portfolios, or any other static content you'd like. Your GitHub repository can easily become its own website. In this course, we'll show you how to set up your own site or blog using GitHub Pages.
+        /* Texto de la suscripción */
+        .subscribe-box h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
 
-- **Who is this for**: Beginners, students, project maintainers, small businesses.
-- **What you'll learn**: How to build a GitHub Pages site.
-- **What you'll build**: We'll build a simple GitHub Pages site with a blog. We'll use [Jekyll](https://jekyllrb.com), a static site generator.
-- **Prerequisites**: If you need to learn about branches, commits, and pull requests, take [Introduction to GitHub](https://github.com/skills/introduction-to-github) first.
-- **How long**: This course takes less than one hour to complete.
+        .subscribe-box p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
 
-In this course, you will:
+        /* Formulario de suscripción */
+        .subscribe-box input[type="email"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
 
-1. Enable GitHub Pages
-2. Configure your site
-3. Customize your home page
-4. Create a blog post
-5. Merge your pull request
+        .subscribe-box button {
+            width: 80%;
+            padding: 10px;
+            background-color: #fff;
+            color: #009688;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-### How to start this course
+        .subscribe-box button:hover {
+            background-color: #00796b;
+            color: #fff;
+        }
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'github-pages',
-  owner: '@me',
-  name: 'skills-github-pages',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+        /* Botón de PayPal */
+        .paypal-button-container {
+            margin-top: 20px;
+        }
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=github-pages&owner=%40me&name=skills-github-pages&description=My+clone+repository&visibility=public)
+        /* Footer */
+        .footer {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 20px;
+        }
 
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
 
-<footer>
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
 
----
+            h1 {
+                font-size: 2rem;
+            }
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+            .info-box {
+                font-size: 0.8rem;
+            }
 
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+            .paypal-button-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
 
-</footer>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            Trending Now Vlog
+        </div>
+
+        <div class="info-box">
+            <p><strong>TNV</strong> brings you the latest updates from all around the world in business, marketing, and trends.</p>
+        </div>
+
+        <div class="subscribe-box">
+            <h3>Join for Only $20/month</h3>
+            <p>Gain Access to Exclusive Strategies, Insights, and Tips! Join a growing community of +100,000 inspired individuals who receive our exclusive content.</p>
+
+            <div class="paypal-button-container" id="paypal-button-container-P-9SK59765J51165948M56K2VA"></div>
+
+            <!-- Script para el botón de PayPal -->
+            <script src="https://www.paypal.com/sdk/js?client-id=AcdISQmd7Mg6jw0YoZX55vyjtUtdf6SVeeDpjD__jiV8Wc_4joufrFTrh93IPGawN71sQL9rCXCyBHOH&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+            <script>
+              paypal.Buttons({
+                  style: {
+                      shape: 'rect',
+                      color: 'gold',
+                      layout: 'vertical',
+                      label: 'subscribe'
+                  },
+                  createSubscription: function(data, actions) {
+                    return actions.subscription.create({
+                      plan_id: 'P-9SK59765J51165948M56K2VA'
+                    });
+                  },
+                  onApprove: function(data, actions) {
+                    alert(data.subscriptionID); // Mensaje de éxito al aprobar
+                  }
+              }).render('#paypal-button-container-P-9SK59765J51165948M56K2VA');
+            </script>
+        </div>
+
+        <div class="footer">
+            <p>By subscribing, you agree to our <a href="terminosycondiciones.html">Terms & Conditions</a>.</p>
+        </div>
+    </div>
+
+</body>
+</html>
